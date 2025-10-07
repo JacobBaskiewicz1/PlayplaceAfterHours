@@ -47,9 +47,9 @@ public class Player : MonoBehaviour
     {
         moveHorizontal = Input.GetAxisRaw("Horizontal");
         moveForward = Input.GetAxisRaw("Vertical");
-
+        // Rotate camera every frame
         RotateCamera();
-
+        // see if player can jump (isGrounded)
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
             Jump();
@@ -58,6 +58,7 @@ public class Player : MonoBehaviour
         // Checking when we're on the ground and keeping track of our ground check delay
         if (!isGrounded && groundCheckTimer <= 0f)
         {
+            // casts raycast downwards to see if it collides with ground layer
             Vector3 rayOrigin = transform.position + Vector3.up * 0.1f;
             isGrounded = Physics.Raycast(rayOrigin, Vector3.down, raycastDistance, groundLayer);
         }
@@ -67,7 +68,7 @@ public class Player : MonoBehaviour
         }
 
     }
-
+    // apply physics every fixed update
     void FixedUpdate()
     {
         MovePlayer();
@@ -113,12 +114,12 @@ public class Player : MonoBehaviour
 
     void ApplyJumpPhysics()
     {
-        if (rb.linearVelocity.y < 0) 
+        if (rb.linearVelocity.y < 0) // falling
         {
             // Falling: Apply fall multiplier to make descent faster
             rb.linearVelocity += Vector3.up * Physics.gravity.y * fallMultiplier * Time.fixedDeltaTime;
-        } // Rising
-        else if (rb.linearVelocity.y > 0)
+        }
+        else if (rb.linearVelocity.y > 0) // rising
         {
             // Rising: Change multiplier to make player reach peak of jump faster
             rb.linearVelocity += Vector3.up * Physics.gravity.y * ascendMultiplier  * Time.fixedDeltaTime;
