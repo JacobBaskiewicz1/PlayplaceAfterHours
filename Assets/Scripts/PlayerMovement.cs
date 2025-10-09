@@ -18,7 +18,7 @@ public class Player : MonoBehaviour
     private float moveForward;
 
     // Jumping
-    public float jumpForce = 10f;
+    public float jumpForce = 5f;
     public float fallMultiplier = 2.5f; // Multiplies gravity when falling down
     public float ascendMultiplier = 2f; // Multiplies gravity for ascending to peak of jump
     private bool isGrounded = true;
@@ -28,14 +28,25 @@ public class Player : MonoBehaviour
     private float playerHeight;
     private float raycastDistance;
 
+    // Friction
+    public PhysicsMaterial highFrictionMaterial;
+    public PhysicsMaterial lowFrictionMaterial;
+
+    // Collidor
+    private BoxCollider boxCollider;
+
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        rb.interpolation = RigidbodyInterpolation.Interpolate; // enable interpolation
         rb.freezeRotation = true;
         cameraTransform = Camera.main.transform;
 
+        boxCollider = GetComponent<BoxCollider>();
+
         // Set the raycast to be slightly beneath the player's feet
-        playerHeight = GetComponent<CapsuleCollider>().height * transform.localScale.y;
+        playerHeight = GetComponent<BoxCollider>().size.y * transform.localScale.y;
         raycastDistance = (playerHeight / 2) + 0.2f;
 
         // Hides the mouse
@@ -47,8 +58,6 @@ public class Player : MonoBehaviour
     {
         moveHorizontal = Input.GetAxisRaw("Horizontal");
         moveForward = Input.GetAxisRaw("Vertical");
-        // Rotate camera every frame
-        RotateCamera();
         // see if player can jump (isGrounded)
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
@@ -71,27 +80,36 @@ public class Player : MonoBehaviour
     // apply physics every fixed update
     void FixedUpdate()
     {
+        if (isGrounded)
+        {
+            boxCollider.material = highFrictionMaterial;
+        }
+        else
+        {
+            boxCollider.material = lowFrictionMaterial;
+        }
         MovePlayer();
         ApplyJumpPhysics();
     }
 
+    void LateUpdate()
+    {
+        // Rotate camera every frame
+        RotateCamera();
+        // transform camera to player position
+        cameraTransform.position = transform.position + Vector3.up * (playerHeight / 2);
+        cameraTransform.rotation = Quaternion.Euler(verticalRotation, transform.eulerAngles.y, 0);
+    }
+
     void MovePlayer()
     {
-
         Vector3 movement = (transform.right * moveHorizontal + transform.forward * moveForward).normalized;
         Vector3 targetVelocity = movement * MoveSpeed;
 
         // Apply movement to the Rigidbody
-        Vector3 velocity = rb.linearVelocity;
-        velocity.x = targetVelocity.x;
-        velocity.z = targetVelocity.z;
-        rb.linearVelocity = velocity;
-
-        // If we aren't moving and are on the ground, stop velocity so we don't slide
-        if (isGrounded && moveHorizontal == 0 && moveForward == 0)
-        {
-            rb.linearVelocity = new Vector3(0, rb.linearVelocity.y, 0);
-        }
+        Vector3 velocityChange = targetVelocity - rb.linearVelocity;
+        velocityChange.y = 0; // Preserve the current vertical velocity
+        rb.AddForce(velocityChange, ForceMode.VelocityChange);
     }
 
     void RotateCamera()
