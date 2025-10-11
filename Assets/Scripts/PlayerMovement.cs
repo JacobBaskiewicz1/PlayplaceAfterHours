@@ -58,8 +58,9 @@ public class Player : MonoBehaviour
     {
         moveHorizontal = Input.GetAxisRaw("Horizontal");
         moveForward = Input.GetAxisRaw("Vertical");
-        // see if player can jump (isGrounded)
-        if (Input.GetButtonDown("Jump") && isGrounded)
+        
+        // JUMP CODE - REFACTOR WHEN MAKING MONKEY BARS
+        /*if (Input.GetButtonDown("Jump") && isGrounded)
         {
             Jump();
         }
@@ -74,7 +75,7 @@ public class Player : MonoBehaviour
         else
         {
             groundCheckTimer -= Time.deltaTime;
-        }
+        }*/
 
     }
     // apply physics every fixed update
