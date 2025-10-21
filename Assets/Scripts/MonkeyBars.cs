@@ -68,7 +68,7 @@ public class MonkeyBars : MonoBehaviour, IInteractable
         isHolding = false;
 
         // Re-enable movement and other player features
-        rb.constraints = RigidbodyConstraints.None;
+        rb.constraints = RigidbodyConstraints.FreezeRotation;
         player.playerCanMove = true;
         player.enableJump = false;
         player.enableHeadBob = true;
