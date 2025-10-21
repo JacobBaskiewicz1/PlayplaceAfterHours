@@ -18,7 +18,8 @@ public class Interactor : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E)) // on E press
         {
-            Ray r = new Ray(interactorSource.position, interactorSource.forward); // create ray forwards 
+            Camera cam = Camera.main;
+            Ray r = new Ray(cam.transform.position, cam.transform.forward); // create ray towrads camera direciton 
             if (Physics.Raycast(r, out RaycastHit hitInfo, interactRange)) // cast ray
             {   // see if ray has hit obj, if so return obj that contains IInteractable interface
                 if (hitInfo.collider.gameObject.TryGetComponent(out IInteractable interactObj))
@@ -26,6 +27,7 @@ public class Interactor : MonoBehaviour
                     interactObj.Interact(); // if so, interact
                 }
             }
+            Debug.DrawRay(interactorSource.position, interactorSource.forward * interactRange, Color.red, 0.1f);
         }
     }
 }

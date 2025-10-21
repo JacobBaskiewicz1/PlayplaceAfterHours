@@ -1,8 +1,43 @@
 using UnityEngine;
-
-/*
-    This script provides jumping and movement in Unity 3D - Gatsby
-*/
+// FIND NEW PLAYER MOVEMENT SCRIPT IN ModularFirstPersonController -> FirstPersonController -> FirstPersonController.cs
+// FIND NEW PLAYER MOVEMENT SCRIPT IN ModularFirstPersonController -> FirstPersonController -> FirstPersonController.cs
+// FIND NEW PLAYER MOVEMENT SCRIPT IN ModularFirstPersonController -> FirstPersonController -> FirstPersonController.cs
+// FIND NEW PLAYER MOVEMENT SCRIPT IN ModularFirstPersonController -> FirstPersonController -> FirstPersonController.cs
+// FIND NEW PLAYER MOVEMENT SCRIPT IN ModularFirstPersonController -> FirstPersonController -> FirstPersonController.cs
+// FIND NEW PLAYER MOVEMENT SCRIPT IN ModularFirstPersonController -> FirstPersonController -> FirstPersonController.cs
+// FIND NEW PLAYER MOVEMENT SCRIPT IN ModularFirstPersonController -> FirstPersonController -> FirstPersonController.cs
+// FIND NEW PLAYER MOVEMENT SCRIPT IN ModularFirstPersonController -> FirstPersonController -> FirstPersonController.cs
+// FIND NEW PLAYER MOVEMENT SCRIPT IN ModularFirstPersonController -> FirstPersonController -> FirstPersonController.cs
+// FIND NEW PLAYER MOVEMENT SCRIPT IN ModularFirstPersonController -> FirstPersonController -> FirstPersonController.cs
+// FIND NEW PLAYER MOVEMENT SCRIPT IN ModularFirstPersonController -> FirstPersonController -> FirstPersonController.cs
+// FIND NEW PLAYER MOVEMENT SCRIPT IN ModularFirstPersonController -> FirstPersonController -> FirstPersonController.cs
+// FIND NEW PLAYER MOVEMENT SCRIPT IN ModularFirstPersonController -> FirstPersonController -> FirstPersonController.cs
+// FIND NEW PLAYER MOVEMENT SCRIPT IN ModularFirstPersonController -> FirstPersonController -> FirstPersonController.cs
+// FIND NEW PLAYER MOVEMENT SCRIPT IN ModularFirstPersonController -> FirstPersonController -> FirstPersonController.cs
+// FIND NEW PLAYER MOVEMENT SCRIPT IN ModularFirstPersonController -> FirstPersonController -> FirstPersonController.cs
+// FIND NEW PLAYER MOVEMENT SCRIPT IN ModularFirstPersonController -> FirstPersonController -> FirstPersonController.cs
+// FIND NEW PLAYER MOVEMENT SCRIPT IN ModularFirstPersonController -> FirstPersonController -> FirstPersonController.cs
+// FIND NEW PLAYER MOVEMENT SCRIPT IN ModularFirstPersonController -> FirstPersonController -> FirstPersonController.cs
+// FIND NEW PLAYER MOVEMENT SCRIPT IN ModularFirstPersonController -> FirstPersonController -> FirstPersonController.cs
+// FIND NEW PLAYER MOVEMENT SCRIPT IN ModularFirstPersonController -> FirstPersonController -> FirstPersonController.cs
+// FIND NEW PLAYER MOVEMENT SCRIPT IN ModularFirstPersonController -> FirstPersonController -> FirstPersonController.cs
+// FIND NEW PLAYER MOVEMENT SCRIPT IN ModularFirstPersonController -> FirstPersonController -> FirstPersonController.cs
+// FIND NEW PLAYER MOVEMENT SCRIPT IN ModularFirstPersonController -> FirstPersonController -> FirstPersonController.cs
+// FIND NEW PLAYER MOVEMENT SCRIPT IN ModularFirstPersonController -> FirstPersonController -> FirstPersonController.cs
+// FIND NEW PLAYER MOVEMENT SCRIPT IN ModularFirstPersonController -> FirstPersonController -> FirstPersonController.cs
+// FIND NEW PLAYER MOVEMENT SCRIPT IN ModularFirstPersonController -> FirstPersonController -> FirstPersonController.cs
+// FIND NEW PLAYER MOVEMENT SCRIPT IN ModularFirstPersonController -> FirstPersonController -> FirstPersonController.cs
+// FIND NEW PLAYER MOVEMENT SCRIPT IN ModularFirstPersonController -> FirstPersonController -> FirstPersonController.cs
+// FIND NEW PLAYER MOVEMENT SCRIPT IN ModularFirstPersonController -> FirstPersonController -> FirstPersonController.cs
+// FIND NEW PLAYER MOVEMENT SCRIPT IN ModularFirstPersonController -> FirstPersonController -> FirstPersonController.cs
+// FIND NEW PLAYER MOVEMENT SCRIPT IN ModularFirstPersonController -> FirstPersonController -> FirstPersonController.cs
+// FIND NEW PLAYER MOVEMENT SCRIPT IN ModularFirstPersonController -> FirstPersonController -> FirstPersonController.cs
+// FIND NEW PLAYER MOVEMENT SCRIPT IN ModularFirstPersonController -> FirstPersonController -> FirstPersonController.cs
+// FIND NEW PLAYER MOVEMENT SCRIPT IN ModularFirstPersonController -> FirstPersonController -> FirstPersonController.cs
+// FIND NEW PLAYER MOVEMENT SCRIPT IN ModularFirstPersonController -> FirstPersonController -> FirstPersonController.cs
+// FIND NEW PLAYER MOVEMENT SCRIPT IN ModularFirstPersonController -> FirstPersonController -> FirstPersonController.cs
+// FIND NEW PLAYER MOVEMENT SCRIPT IN ModularFirstPersonController -> FirstPersonController -> FirstPersonController.cs
+// FIND NEW PLAYER MOVEMENT SCRIPT IN ModularFirstPersonController -> FirstPersonController -> FirstPersonController.cs
 
 public class Player : MonoBehaviour
 {
@@ -10,7 +45,7 @@ public class Player : MonoBehaviour
     public float mouseSensitivity = 2f;
     private float verticalRotation = 0f;
     private Transform cameraTransform;
-    
+
     // Ground Movement
     private Rigidbody rb;
     public float MoveSpeed = 5f;
@@ -58,7 +93,7 @@ public class Player : MonoBehaviour
     {
         moveHorizontal = Input.GetAxisRaw("Horizontal");
         moveForward = Input.GetAxisRaw("Vertical");
-        
+
         // JUMP CODE - REFACTOR WHEN MAKING MONKEY BARS
         /*if (Input.GetButtonDown("Jump") && isGrounded)
         {
@@ -141,7 +176,7 @@ public class Player : MonoBehaviour
         else if (rb.linearVelocity.y > 0) // rising
         {
             // Rising: Change multiplier to make player reach peak of jump faster
-            rb.linearVelocity += Vector3.up * Physics.gravity.y * ascendMultiplier  * Time.fixedDeltaTime;
+            rb.linearVelocity += Vector3.up * Physics.gravity.y * ascendMultiplier * Time.fixedDeltaTime;
         }
     }
 }
