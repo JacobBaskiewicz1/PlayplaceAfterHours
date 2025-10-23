@@ -148,7 +148,14 @@ public class FirstPersonController : MonoBehaviour
             sprintCooldownReset = sprintCooldown;
         }
     }
-
+    public bool PlayerIsWalking()
+    {
+        return isWalking;
+    }
+    public bool PlayerIsGrounded()
+    {
+        return isGrounded;
+    }
     void Start()
     {
         if(lockCursor)
