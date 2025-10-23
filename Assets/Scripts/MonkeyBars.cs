@@ -8,9 +8,15 @@ public class MonkeyBars : MonoBehaviour, IInteractable
      private Rigidbody rb; // player rigidbody
     private bool hasJumped = false;
 
+    public float interactRange = 3.0f;
+
     public float hangOffset = 1.2f;
     public float jumpBoost = 15f;
 
+    public float GetInteractRange()
+    {
+        return interactRange;
+    }
     // get player obj
     void Start()
     {
@@ -68,7 +74,7 @@ public class MonkeyBars : MonoBehaviour, IInteractable
         isHolding = false;
 
         // Re-enable movement and other player features
-        rb.constraints = RigidbodyConstraints.None;
+        rb.constraints = RigidbodyConstraints.FreezeRotation;
         player.playerCanMove = true;
         player.enableJump = false;
         player.enableHeadBob = true;
