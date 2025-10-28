@@ -65,7 +65,6 @@ public class PuzzleInteraction : MonoBehaviour, IInteractable
         player.playerCanMove = false;
         player.cameraCanMove = false;
         player.enableHeadBob = false;
-        player.enableJump = false;
 
         // make player invisible
         foreach (var r in playerMeshes)
@@ -138,7 +137,6 @@ public class PuzzleInteraction : MonoBehaviour, IInteractable
         player.playerCanMove = true;
         player.cameraCanMove = true;
         player.enableHeadBob = true;
-        player.enableJump = true;
 
         transitioning = false;
         Debug.Log("Exited puzzle mode");
