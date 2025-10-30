@@ -18,17 +18,32 @@ public class TicTacToePuzzle : MonoBehaviour, IInteractable
     public float tileClickRadius = 0.5f;  // Click radius for each tile
 
     private bool puzzleSolved = false;
+    private PuzzleInteraction puzzleInteraction;
 
     // IInteractable requirement (used by Interactor)
     public float interactRange = 5f;
     public float GetInteractRange() { return interactRange; }
 
+    private void Start()
+    {
+        // Get the PuzzleInteraction component on the same GameObject
+        puzzleInteraction = GetComponent<PuzzleInteraction>();
+
+        if (puzzleInteraction == null)
+        {
+            Debug.LogError("TicTacToePuzzle requires a PuzzleInteraction component on the same GameObject!");
+        }
+    }
+
     private void Update()
     {
         if (puzzleSolved) return;
 
-        // Only check clicks if cursor is visible (i.e., in puzzle mode)
+        // Only check clicks if cursor is visible AND this puzzle is active
         if (!Cursor.visible) return;
+
+        // Check if THIS puzzle's PuzzleInteraction is active
+        if (puzzleInteraction == null || !puzzleInteraction.IsInPuzzle()) return;
 
         if (Input.GetMouseButtonDown(0))
         {
@@ -60,10 +75,8 @@ public class TicTacToePuzzle : MonoBehaviour, IInteractable
         float screenWidth = screenHeight * actualAspect;
 
         // Scale down to account for camera viewport mismatch
-        // Camera renders at 640x360 but screen is 966x542
-        // Scale UP significantly to spread tiles further apart
         float viewportScale = (float)cam.pixelHeight / (float)Screen.height;
-        screenHeight *= viewportScale * 0.7f;  // Much larger to spread tiles apart
+        screenHeight *= viewportScale * 0.7f;
         screenWidth *= viewportScale * 0.7f;
 
         // Calculate world position on the board plane
@@ -71,11 +84,6 @@ public class TicTacToePuzzle : MonoBehaviour, IInteractable
         Vector3 clickOffset = cam.transform.right * (horizontalOffset * screenWidth / 2f) +
                               cam.transform.up * (verticalOffset * screenHeight / 2f);
         Vector3 worldClickPos = cam.transform.position + cameraToBoard + clickOffset;
-
-        // Apply empirical correction based on observed offset
-        // Remove previous corrections since we're fixing the root cause
-
-        Debug.Log($"Click at viewport ({viewportX:F2}, {viewportY:F2}) -> World: {worldClickPos}");
 
         // Find closest tile
         Tile closestTile = null;
@@ -102,13 +110,8 @@ public class TicTacToePuzzle : MonoBehaviour, IInteractable
 
         if (closestTile != null)
         {
-            Debug.Log($"Clicked Tile {closestIndex + 1} at {closestTile.transform.position}, distance: {closestDistance:F2}");
             closestTile.Cycle();
             CheckPuzzleSolved();
-        }
-        else
-        {
-            Debug.Log($"No tile within radius {tileClickRadius}");
         }
     }
 

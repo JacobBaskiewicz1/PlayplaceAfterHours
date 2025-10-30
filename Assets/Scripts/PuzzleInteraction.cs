@@ -23,6 +23,12 @@ public class PuzzleInteraction : MonoBehaviour, IInteractable
     {
         return interactRange;
     }
+
+    public bool IsInPuzzle()
+    {
+        return inPuzzle;
+    }
+
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<FirstPersonController>();
