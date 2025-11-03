@@ -31,4 +31,10 @@ public class UIManager : MonoBehaviour
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
     }
+
+    public void Quit()
+    {
+        Application.Quit();
+        Debug.Log("quit");
+    }
 }
