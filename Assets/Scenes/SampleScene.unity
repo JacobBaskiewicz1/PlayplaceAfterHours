@@ -14,7 +14,7 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 10
-  m_Fog: 1
+  m_Fog: 0
   m_FogColor: {r: 0.5283019, g: 0.5283019, b: 0.5283019, a: 1}
   m_FogMode: 3
   m_FogDensity: 0.039
@@ -879,7 +879,7 @@ RectTransform:
   m_GameObject: {fileID: 206479263}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.6363, y: 1.6363, z: 1.6363}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1695977368}
@@ -11271,7 +11271,7 @@ RectTransform:
   m_GameObject: {fileID: 1696265462}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.6894, y: 1.6894, z: 1.6894}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1992579651}
@@ -14573,7 +14573,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f5a4aa0fe3f54054e8e5404d39634fcc, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -14.791
+      value: -15.064
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f5a4aa0fe3f54054e8e5404d39634fcc, type: 3}
       propertyPath: m_LocalPosition.y
@@ -14581,7 +14581,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f5a4aa0fe3f54054e8e5404d39634fcc, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 13.658
+      value: 13.163
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: f5a4aa0fe3f54054e8e5404d39634fcc, type: 3}
       propertyPath: m_LocalRotation.w
