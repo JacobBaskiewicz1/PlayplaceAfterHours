@@ -35,6 +35,8 @@ public class TicTacToePuzzle : MonoBehaviour, IInteractable
     /// Call this method from a UI Button's OnClick event.
     /// Pass the tile index (0-8) for the button.
     /// </summary>
+    /// 
+    public AudioSource tap;
     public void OnTileButtonClicked(int tileIndex)
     {
         if (puzzleSolved) return;
@@ -46,6 +48,7 @@ public class TicTacToePuzzle : MonoBehaviour, IInteractable
         Tile tile = tiles[tileIndex].GetComponent<Tile>();
         if (tile != null)
         {
+            tap.Play();
             tile.Cycle();
             CheckPuzzleSolved();
         }

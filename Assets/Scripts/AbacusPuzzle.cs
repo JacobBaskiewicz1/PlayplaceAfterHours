@@ -34,12 +34,14 @@ public class AbacusPuzzle : MonoBehaviour, IInteractable
     /// <summary>
     /// Call from UI buttons. RowIndex = 0-4
     /// </summary>
+    public AudioSource slide;
     public void OnMoveRowLeft(int rowIndex)
     {
         if (puzzleSolved) return;
         if (rowIndex < 0 || rowIndex >= rows.Length) return;
         if (puzzleInteraction == null || !puzzleInteraction.IsInPuzzle()) return;
 
+        slide.Play();
         rows[rowIndex].MoveBeadLeft();
         CheckPuzzleSolved();
     }
@@ -53,6 +55,7 @@ public class AbacusPuzzle : MonoBehaviour, IInteractable
         if (rowIndex < 0 || rowIndex >= rows.Length) return;
         if (puzzleInteraction == null || !puzzleInteraction.IsInPuzzle()) return;
 
+        slide.Play();
         rows[rowIndex].MoveBeadRight();
         CheckPuzzleSolved();
     }
