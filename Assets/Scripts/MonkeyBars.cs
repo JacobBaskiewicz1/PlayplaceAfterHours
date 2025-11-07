@@ -5,7 +5,7 @@ public class MonkeyBars : MonoBehaviour, IInteractable
 {
     public bool isHolding = false;
     FirstPersonController player;
-     private Rigidbody rb; // player rigidbody
+    private Rigidbody rb; // player rigidbody
     private bool hasJumped = false;
 
     public float interactRange = 3.0f;
