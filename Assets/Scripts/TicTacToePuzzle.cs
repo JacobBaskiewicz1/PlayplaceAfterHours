@@ -1,12 +1,20 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+
+[System.Serializable]
+public class DoorConfig
+{
+    public GameObject doorObject;            // The door to move
+    public Vector3 slideDirection = Vector3.down; // Direction of movement
+    public float slideAmount = 3f;           // Distance to move
+    public float slideSpeed = 2f;            // Speed of movement
+}
 
 public class TicTacToePuzzle : MonoBehaviour, IInteractable
 {
     [Header("Puzzle Settings")]
-    public GameObject doorToOpen;
-    public float doorSlideAmount = 3f;
-    public float doorSlideSpeed = 2f;
+    public List<DoorConfig> doorsToOpen; // Supports multiple doors
 
     [Header("Tiles (assign all 9 cylinder tile GameObjects in order)")]
     public GameObject[] tiles;
@@ -95,29 +103,33 @@ public class TicTacToePuzzle : MonoBehaviour, IInteractable
         puzzleSolved = true;
         Debug.Log("Puzzle solved!");
 
-        if (doorToOpen != null)
-            StartCoroutine(SlideDoorDown());
+        // Open all configured doors
+        foreach (DoorConfig door in doorsToOpen)
+        {
+            if (door.doorObject != null)
+                StartCoroutine(SlideDoor(door));
+        }
     }
 
     /// <summary>
-    /// Slide the door down once puzzle is solved
+    /// Slide a single door in its own direction and distance
     /// </summary>
-    private IEnumerator SlideDoorDown()
+    private IEnumerator SlideDoor(DoorConfig door)
     {
-        Vector3 start = doorToOpen.transform.position;
-        Vector3 end = start - new Vector3(0, doorSlideAmount, 0);
+        Vector3 start = door.doorObject.transform.position;
+        Vector3 end = start + (door.slideDirection.normalized * door.slideAmount);
 
-        while (Vector3.Distance(doorToOpen.transform.position, end) > 0.01f)
+        while (Vector3.Distance(door.doorObject.transform.position, end) > 0.01f)
         {
-            doorToOpen.transform.position = Vector3.MoveTowards(
-                doorToOpen.transform.position,
+            door.doorObject.transform.position = Vector3.MoveTowards(
+                door.doorObject.transform.position,
                 end,
-                doorSlideSpeed * Time.deltaTime
+                door.slideSpeed * Time.deltaTime
             );
             yield return null;
         }
 
-        doorToOpen.transform.position = end;
+        door.doorObject.transform.position = end;
     }
 
     public void Interact()
