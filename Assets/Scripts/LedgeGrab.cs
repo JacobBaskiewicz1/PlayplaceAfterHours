@@ -41,5 +41,6 @@ public class LedgeGrab : MonoBehaviour, IInteractable
         // Re-enable player movement
         player.playerCanMove = true;
         player.enableHeadBob = true;
+        player.GetComponent<Rigidbody>().linearVelocity = Vector3.zero;
     }
 }
