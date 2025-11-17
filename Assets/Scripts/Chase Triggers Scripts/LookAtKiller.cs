@@ -21,6 +21,9 @@ public class LookAtKiller : MonoBehaviour
         new Keyframe(1f, 1f, 2f, 0f)      // slow start, fast finish
     );
 
+    [Header("Close Door")]
+    public GameObject mainDoor;
+
     private void OnTriggerEnter(Collider other)
     {
         if (activated) return;
@@ -29,6 +32,8 @@ public class LookAtKiller : MonoBehaviour
 
         activated = true;
         StartCoroutine(LookSequence());
+        if (mainDoor != null)
+            StartCoroutine(MoveDoorDown());
     }
 
     private IEnumerator LookSequence()
@@ -65,5 +70,22 @@ public class LookAtKiller : MonoBehaviour
         }
 
         playerCamera.rotation = startRot;
+    }
+    private IEnumerator MoveDoorDown()
+    {
+        Vector3 startPos = mainDoor.transform.position;
+        Vector3 endPos = startPos + Vector3.down * 4.77f;
+
+        float duration = 1f;
+        float t = 0f;
+
+        while (t < 1f)
+        {
+            mainDoor.transform.position = Vector3.Lerp(startPos, endPos, t);
+            t += Time.deltaTime / duration;
+            yield return null;
+        }
+
+        mainDoor.transform.position = endPos;
     }
 }

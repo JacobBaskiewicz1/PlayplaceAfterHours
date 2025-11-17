@@ -1,5 +1,6 @@
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
@@ -36,5 +37,15 @@ public class UIManager : MonoBehaviour
     {
         Application.Quit();
         Debug.Log("quit");
+    }
+
+    public void Play()
+    {
+        SceneManager.LoadScene(1); 
+    }
+
+    public void MainMenu()
+    {
+        SceneManager.LoadScene(0); 
     }
 }
