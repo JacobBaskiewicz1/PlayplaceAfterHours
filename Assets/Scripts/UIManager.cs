@@ -20,6 +20,7 @@ public class UIManager : MonoBehaviour
 
     public void Pause()
     {
+        canPause = false;
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
         Time.timeScale = 0f;
@@ -29,6 +30,7 @@ public class UIManager : MonoBehaviour
 
     public void Return()
     {
+        canPause = true;
         Time.timeScale = 1f;
         pauseMenu.SetActive(false);
         player.cameraCanMove = true;

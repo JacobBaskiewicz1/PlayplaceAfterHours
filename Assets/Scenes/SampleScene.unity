@@ -17,7 +17,7 @@ RenderSettings:
   m_Fog: 1
   m_FogColor: {r: 0.16981131, g: 0.16981131, b: 0.16981131, a: 1}
   m_FogMode: 3
-  m_FogDensity: 0.06
+  m_FogDensity: 0.08
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
@@ -18052,6 +18052,30 @@ PrefabInstance:
     - target: {fileID: 5810052131246503597, guid: 4eda44b090d92e142863a0b6034af6ed, type: 3}
       propertyPath: doorsToOpen.Array.size
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5810052131246503597, guid: 4eda44b090d92e142863a0b6034af6ed, type: 3}
+      propertyPath: 'correctPattern.Array.data[0]'
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5810052131246503597, guid: 4eda44b090d92e142863a0b6034af6ed, type: 3}
+      propertyPath: 'correctPattern.Array.data[1]'
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5810052131246503597, guid: 4eda44b090d92e142863a0b6034af6ed, type: 3}
+      propertyPath: 'correctPattern.Array.data[2]'
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5810052131246503597, guid: 4eda44b090d92e142863a0b6034af6ed, type: 3}
+      propertyPath: 'correctPattern.Array.data[3]'
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5810052131246503597, guid: 4eda44b090d92e142863a0b6034af6ed, type: 3}
+      propertyPath: 'correctPattern.Array.data[4]'
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5810052131246503597, guid: 4eda44b090d92e142863a0b6034af6ed, type: 3}
+      propertyPath: 'correctPattern.Array.data[8]'
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5810052131246503597, guid: 4eda44b090d92e142863a0b6034af6ed, type: 3}
       propertyPath: doorsToOpen.Array.data[0].doorObject
