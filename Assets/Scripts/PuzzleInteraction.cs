@@ -25,6 +25,9 @@ public class PuzzleInteraction : MonoBehaviour, IInteractable
     public float GetInteractRange() => interactRange;
     public bool IsInPuzzle() => inPuzzle;
 
+    [Header("UI Manager")]
+    [SerializeField] private UIManager uim;
+
     void Awake()
     {
         // Ensure the panel is completely hidden at the start
@@ -36,6 +39,7 @@ public class PuzzleInteraction : MonoBehaviour, IInteractable
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<FirstPersonController>();
         playerCamera = Camera.main;
+        uim.canPause = true;
 
         // Save original parent and local transform
         cameraParentOriginal = playerCamera.transform.parent;
@@ -52,6 +56,12 @@ public class PuzzleInteraction : MonoBehaviour, IInteractable
         if (inPuzzle && !transitioning && Input.GetKeyDown(KeyCode.E))
         {
             StartCoroutine(ExitPuzzle());
+            uim.SetNotInPuzzle();
+        }
+        if (inPuzzle && !transitioning && Input.GetKeyDown(KeyCode.Escape))
+        {
+            StartCoroutine(ExitPuzzle());
+            uim.SetNotInPuzzle();
         }
     }
 
@@ -59,14 +69,19 @@ public class PuzzleInteraction : MonoBehaviour, IInteractable
     {
         if (transitioning) return;
 
-        if (!inPuzzle)
+        if (!inPuzzle) {
             StartCoroutine(EnterPuzzle());
-        else
+            uim.SetInPuzzle();
+        }
+        else {
             StartCoroutine(ExitPuzzle());
+            uim.SetNotInPuzzle();
+        }
     }
 
     private IEnumerator EnterPuzzle()
     {
+        uim.canPause = false;
         transitioning = true;
         inPuzzle = true;
 
@@ -109,11 +124,13 @@ public class PuzzleInteraction : MonoBehaviour, IInteractable
         cam.SetParent(cameraFocus, true);
 
         transitioning = false;
+        uim.canPause = true;
         Debug.Log("Entered puzzle mode");
     }
 
     private IEnumerator ExitPuzzle()
     {
+        uim.canPause = false;
         transitioning = true;
         inPuzzle = false;
 
@@ -156,6 +173,7 @@ public class PuzzleInteraction : MonoBehaviour, IInteractable
         player.enableHeadBob = true;
 
         transitioning = false;
+        uim.canPause = true;
         Debug.Log("Exited puzzle mode");
     }
 
