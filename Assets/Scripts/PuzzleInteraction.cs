@@ -73,10 +73,6 @@ public class PuzzleInteraction : MonoBehaviour, IInteractable
             StartCoroutine(EnterPuzzle());
             uim.SetInPuzzle();
         }
-        else {
-            StartCoroutine(ExitPuzzle());
-            uim.SetNotInPuzzle();
-        }
     }
 
     private IEnumerator EnterPuzzle()

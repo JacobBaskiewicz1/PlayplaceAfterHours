@@ -13196,6 +13196,7 @@ Transform:
   - {fileID: 909922064}
   - {fileID: 1948232897}
   - {fileID: 617943381}
+  - {fileID: 1042593618}
   - {fileID: 4463085465376996536}
   - {fileID: 1366117931}
   - {fileID: 1955361887}
@@ -16451,6 +16452,94 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 8314571269056883277, guid: d3092dd83e5a5224f9f0046fdcac0fa8, type: 3}
+--- !u!1 &625725751
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 625725752}
+  - component: {fileID: 625725754}
+  - component: {fileID: 625725753}
+  m_Layer: 0
+  m_Name: Chase2Trigger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &625725752
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 625725751}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 25.3, y: 10.204999, z: 21.47}
+  m_LocalScale: {x: 3.8399997, y: 3.8299997, z: 4.3699994}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1042593618}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &625725753
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 625725751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91f1692a17bc5094ba029cbefd902a27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  killerTransform: {fileID: 1902860791}
+  lookDuration: 2
+  rotationSpeed: 0.5
+  chasePoints:
+  - {fileID: 1041402151}
+  - {fileID: 1725660751}
+  - {fileID: 1043988655}
+  - {fileID: 526771605}
+  - {fileID: 1627861706}
+  - {fileID: 200964200}
+  - {fileID: 1178396751}
+  - {fileID: 1990268859}
+  - {fileID: 1463268366}
+  killerMoveSpeed: 3
+  killerRotationSpeed: 8
+  killerRotationOffset: -90
+  destroyKillerAtEnd: 1
+  doorObject: {fileID: 253355207}
+  slideDirection: {x: 1, y: 0, z: 0}
+  slideAmount: 5
+  slideSpeed: 5
+  playerTag: Player
+--- !u!65 &625725754
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 625725751}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!64 &630307077
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -19720,6 +19809,38 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.019856201, y: 0.020158766, z: 0.020158764}
   m_Center: {x: 0.03976136, y: 0, z: 0}
+--- !u!1 &785433511
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 785433512}
+  m_Layer: 0
+  m_Name: ChasePoints
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &785433512
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 785433511}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1855406799}
+  m_Father: {fileID: 1042593618}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!64 &792926420
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -27185,6 +27306,39 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1041693824}
   m_Mesh: {fileID: -3329902420748629119, guid: d3092dd83e5a5224f9f0046fdcac0fa8, type: 3}
+--- !u!1 &1042593617
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1042593618}
+  m_Layer: 0
+  m_Name: Chase2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1042593618
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1042593617}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 625725752}
+  - {fileID: 785433512}
+  m_Father: {fileID: 510484500}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1043988654
 GameObject:
   m_ObjectHideFlags: 0
@@ -28525,7 +28679,7 @@ Transform:
   m_GameObject: {fileID: 1138633637}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 44.7, y: 1, z: -85.54}
+  m_LocalPosition: {x: 43.8, y: 8.7, z: -59.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -35420,7 +35574,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: a9554015c990a824f8cf60f615f8fb12, type: 3}
+  m_Texture: {fileID: 2800000, guid: 854fab0d78899924886cc27f446b67c4, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
@@ -47269,6 +47423,37 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 6055277006425145491, guid: d3092dd83e5a5224f9f0046fdcac0fa8, type: 3}
+--- !u!1 &1855406798
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1855406799}
+  m_Layer: 0
+  m_Name: Chase1Point1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1855406799
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1855406798}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 17.009, y: 9.42, z: 22.026}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 785433512}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1857856339
 PrefabInstance:
   m_ObjectHideFlags: 0

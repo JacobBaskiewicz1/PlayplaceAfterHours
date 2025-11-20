@@ -12,6 +12,8 @@ public class UIManager : MonoBehaviour
 
     void Update()
     {   
+        if (inPuzzle) return;
+        
         if (canPause && Input.GetKeyDown(KeyCode.Escape))
         {
             Pause();
