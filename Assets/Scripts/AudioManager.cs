@@ -5,10 +5,13 @@ public class AudioManager : MonoBehaviour
     public AudioSource footsteps;
     FirstPersonController player;
     private PuzzleInteraction[] puzzles;
+    [SerializeField] private AudioSource chaseTheme;
+    [SerializeField] private AudioSource mainTheme;
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<FirstPersonController>();
         puzzles = FindObjectsByType<PuzzleInteraction>(FindObjectsSortMode.None);
+        PlayMain();
     }
     void Update()
     {
@@ -35,5 +38,23 @@ public class AudioManager : MonoBehaviour
                 return true;
         }
         return false;
+    }
+
+    public void PlayMain()
+    {
+        mainTheme.Play();
+    }
+    public void StopMain()
+    {
+        mainTheme.Stop();
+    }
+
+    public void PlayChase()
+    {
+        chaseTheme.Play();
+    }
+    public void StopChase()
+    {
+        chaseTheme.Stop();
     }
 }

@@ -10,6 +10,11 @@ public class UIManager : MonoBehaviour
     public bool canPause = true;
     public bool inPuzzle = false;
 
+    void Start()
+    {
+        Time.timeScale = 1f;
+    }
+
     void Update()
     {   
         if (inPuzzle) return;

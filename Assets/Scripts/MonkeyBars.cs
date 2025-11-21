@@ -8,7 +8,7 @@ public class MonkeyBars : MonoBehaviour, IInteractable
     private Rigidbody rb; // player rigidbody
     private bool hasJumped = false;
 
-    public float interactRange = 3.0f;
+    public float interactRange = 2.5f;
 
     public float hangOffset = 1.2f;
     public float jumpBoost = 15f;

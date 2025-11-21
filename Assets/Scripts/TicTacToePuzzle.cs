@@ -32,6 +32,9 @@ public class TicTacToePuzzle : MonoBehaviour, IInteractable
     public float interactRange = 5f;
     public float GetInteractRange() { return interactRange; }
 
+    // complete audio
+    [SerializeField] private AudioSource completeAudio;
+
     private void Start()
     {
         puzzleInteraction = GetComponent<PuzzleInteraction>();
@@ -102,6 +105,7 @@ public class TicTacToePuzzle : MonoBehaviour, IInteractable
 
         puzzleSolved = true;
         Debug.Log("Puzzle solved!");
+        completeAudio.Play();
 
         // Open all configured doors
         foreach (DoorConfig door in doorsToOpen)

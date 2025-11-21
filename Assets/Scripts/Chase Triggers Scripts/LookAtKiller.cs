@@ -27,6 +27,9 @@ public class LookAtKiller : MonoBehaviour
     private bool hasActivated = false;
     private FirstPersonController playerController;
 
+    [Header("Audio Manager")]
+    [SerializeField] AudioManager am;
+
     private void OnTriggerEnter(Collider other)
     {
         if (hasActivated) return;                  // Only run once
@@ -41,6 +44,7 @@ public class LookAtKiller : MonoBehaviour
             Debug.LogWarning("Killer Transform not assigned!");
             return;
         }
+        am.StopMain();
 
         hasActivated = true;
         StartCoroutine(LookAtKillerSequence());
@@ -135,6 +139,7 @@ public class LookAtKiller : MonoBehaviour
 
     private IEnumerator ChaseSequence()
     {
+        am.PlayChase();
         // Move killer through each chase point
         for (int i = 0; i < chasePoints.Length; i++)
         {
@@ -187,6 +192,8 @@ public class LookAtKiller : MonoBehaviour
         if (destroyKillerAtEnd && killerTransform != null)
         {
             Destroy(killerTransform.gameObject);
+            am.StopChase();
+            am.PlayMain();
         }
     }
 

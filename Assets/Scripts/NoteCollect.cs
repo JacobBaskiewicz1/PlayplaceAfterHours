@@ -18,6 +18,9 @@ public class NoteCollect : MonoBehaviour, IInteractable
     [SerializeField] private GameObject noteThreeUI;
     [SerializeField] private GameObject noteThreeButton;
 
+    // audio
+    [SerializeField] private AudioSource pickupAudio;
+
     public void Interact()
     {
         if (noteNum == 1)
@@ -38,6 +41,7 @@ public class NoteCollect : MonoBehaviour, IInteractable
             noteThreeButton.SetActive(true);
             Destroy(gameObject);
         }
+        pickupAudio.Play();
     }
 
     public float GetInteractRange()

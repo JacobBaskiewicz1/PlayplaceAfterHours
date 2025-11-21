@@ -21,6 +21,9 @@ public class AbacusPuzzle : MonoBehaviour, IInteractable
     public float interactRange = 5f;
     public float GetInteractRange() => interactRange;
 
+    // complete audio
+    [SerializeField] private AudioSource completeAudio;
+
     private void Start()
     {
         puzzleInteraction = GetComponent<PuzzleInteraction>();
@@ -72,6 +75,7 @@ public class AbacusPuzzle : MonoBehaviour, IInteractable
 
         puzzleSolved = true;
         Debug.Log("Abacus puzzle solved!");
+        completeAudio.Play();
 
         if (doorToOpen != null)
             StartCoroutine(SlideDoorDown());

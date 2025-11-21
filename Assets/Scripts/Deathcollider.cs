@@ -4,6 +4,8 @@ using UnityEngine;
 public class Deathcollider : MonoBehaviour
 {
     private DeathScreenManager deathScreenManager;
+    [SerializeField] private AudioManager am;
+    [SerializeField] private AudioSource scream;
 
     private void Start()
     {
@@ -15,6 +17,9 @@ public class Deathcollider : MonoBehaviour
         {
             Debug.Log("dead");
             deathScreenManager.ShowDeathScreen();
+            am.StopMain();
+            am.StopChase();
+            scream.Play();
         }
     }
 }

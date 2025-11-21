@@ -5,6 +5,10 @@ public class Key : MonoBehaviour, IInteractable
     public float interactRange = 3.0f;
     public static bool hasKey = false;
     [SerializeField] private AudioSource pickupSound;
+    void Start()
+    {
+        hasKey = false;
+    }
     public float GetInteractRange()
     {
         return interactRange;
